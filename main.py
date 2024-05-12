@@ -1,8 +1,9 @@
 import os
 import discord
 import dotenv
-import logging as log
+import logging
 
+from discord.ext import commands
 from logging.handlers import TimedRotatingFileHandler
 from logging import Formatter
 
@@ -22,22 +23,28 @@ defaultHandler = TimedRotatingFileHandler(
 
 defaultHandler.setFormatter(defaultFormatter)
 
-log.basicConfig(level=log.DEBUG)
-log.getLogger().handlers.clear()
-log.getLogger().addHandler(defaultHandler)
+logging.basicConfig(level=logging.DEBUG)
+logging.getLogger().handlers.clear()
+logging.getLogger().addHandler(defaultHandler)
 
 dotenv.load_dotenv()
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
-
-class CustomClient(discord.Client):
+  
+class CustomBot(commands.Bot):
   def __init__(self):
-    log.debug('Custom client initiated.')
-    super().__init__(intents=discord.Intents.default())
+    logging.debug('Bot initiated.')
+    super().__init__(command_prefix='!', intents=discord.Intents.default())
 
   async def on_ready(self):
-    log.debug(f'{client.user} has connected to Discord!')
-    log.debug(f'{client.guilds[0]} id: {client.guilds[0].id}')
+    logging.debug(f'{self.user.name} has connected to Discord!')
+    logging.debug(f'{client.guilds[0]} id: {client.guilds[0].id}')
 
-client = CustomClient()
+  async def on_member_join(member):
+    return
+
+  async def on_error(event, *args, **kwargs):
+    return
+
+client = CustomBot()
 client.run(DISCORD_TOKEN,log_handler=None)
 

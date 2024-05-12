@@ -1,3 +1,4 @@
 .env
 venv
 discord.log
+err.log
