@@ -3,7 +3,7 @@ import logging
 from logging.handlers import TimedRotatingFileHandler
 from logging import Formatter
 
-def getFormattedLogger():
+def get_formatted_logger():
   default_formatter = Formatter(
     fmt="[%(asctime)s] %(levelname)s [%(name)s.%(funcName)s:%(lineno)d] %(message)s",
     datefmt="%d/%b/%Y %H:%M:%S"

@@ -1,4 +1,5 @@
 .env
 venv
-discord.log
+discord.log*
 err.log
+__pycache__
