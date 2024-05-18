@@ -10,7 +10,7 @@ def get_formatted_logger():
   )
 
   default_handler = TimedRotatingFileHandler(
-    filename='discord.log', 
+    filename='./logs/discord.log', 
     when='D', 
     interval=1, 
     backupCount=1, 
