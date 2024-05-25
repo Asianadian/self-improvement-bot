@@ -15,7 +15,7 @@ class SIBot(commands.Bot):
 
   async def load(self):
     for filename in os.listdir('./cogs'):
-      if filename.endswith('.py'):
+      if filename.endswith('.py') and filename != 'base_cog.py':
         await self.load_extension(f'cogs.{filename[:-3]}')
 
   def initialize(self):

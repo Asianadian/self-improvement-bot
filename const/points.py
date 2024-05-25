@@ -1,4 +1,4 @@
-import enum
 
-class Point(enum.Enum):
+
+class Points():
   TEMP = {'delta': 1, 'reason': 'TEMP_POINT'}
